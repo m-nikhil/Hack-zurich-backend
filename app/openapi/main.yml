@@ -1,0 +1,32 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Hach Zurich Docs
+servers:
+  - url: http://localhost:5000
+security:
+  - jwt: ['secret']
+paths:
+  /user:
+    $ref: "./userapi.yml#user"
+  '/user/{userId}':
+    $ref: "./userapi.yml#user~1{userId}"
+  '/user/{userId}/admin':
+    $ref: "./userapi.yml#user~1{userId}~1admin"
+
+  /auth/login:
+    $ref: "./authapi.yml#login"
+    
+components:
+  $ref: "./schemas.yml"
+
+
+
+
+# Subresource considerations for a nested propery object of an entity:
+# 1. If the propery needs different authorization access than the rest of the entity.
+# 2. If the nested propery is a type of array.
+
+# For each object type,
+# 'additionalProperties: false' must be added
+    

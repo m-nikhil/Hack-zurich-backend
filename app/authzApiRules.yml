@@ -1,0 +1,29 @@
+roles:
+  - admin:global
+  - user
+  - supplier
+
+# comment those don't need jwt auth
+# [] denotes no roles expect global
+# curr = current. Only the current users who are owner of the resource can access
+rules:
+
+  /user:
+    #GET: None
+    #POST: None
+  '/user/<userId>':
+    #GET:  None
+    PUT: [user:curr]
+    DELETE: []
+  '/user/<userId>/admin':
+    GET: []
+    POST: []
+
+  /auth/login:
+    #POST: None
+
+# comment and mark as None, if a static don't need authz.
+# [] denotes no roles expect global
+static_rules:
+
+
