@@ -28,22 +28,15 @@ class AuthView(SuperView):
         if body['password'] != body['confirmpassword']:
             raise BussinessException("error",400,"confirm password mismatch") 
         db = self.getConnection()
-        payload = {}
-        if body['isNgo']:
-            result = db.ngo.find_one({'email':body['email'],'password':body['password']},{'_id':True})
-            if not result:
-                raise BussinessException("error",400,"Check your username and passsword!")
-            payload['id'] = str(result['_id'])
-            payload['role'] = 'ngo'
+        payload = {}    
+        result = db.user.find_one({'email':body['email'],'password':body['password']},{'_id':True,'isAdmin':True})
+        if not result:
+            raise BussinessException("error",400,"Check your username and passsword!")
+        payload['id'] = str(result['_id'])
+        if result.get('isAdmin',None):
+            payload['role'] = 'admin'
         else:
-            result = db.user.find_one({'email':body['email'],'password':body['password']},{'_id':True,'isAdmin':True})
-            if not result:
-                raise BussinessException("error",400,"Check your username and passsword!")
-            payload['id'] = str(result['_id'])
-            if result.get('isAdmin',None):
-                payload['role'] = 'admin'
-            else:
-                payload['role'] = 'user'
+            payload['role'] = 'user'
         timestamp = self._current_timestamp()
         payload = {
             "iss": JWT_ISSUER,
