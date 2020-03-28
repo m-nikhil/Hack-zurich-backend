@@ -5,6 +5,7 @@ roles:
 # comment those don't need jwt auth
 # [] denotes no roles expect global
 # curr = current. Only the current users who are owner of the resource can access
+# [all] all logged in user
 rules:
 
   /user:
@@ -40,6 +41,31 @@ rules:
     GET: [user:curr]
     PUT: [user:curr]
     DELETE: []
+
+  '/user/{userId}/need':
+    GET: [user:curr]
+    PUT: [user:curr]
+  '/user/{userId}/need/{needId}':
+    GET: [user:curr]
+    PUT: [user:curr]
+    DELETE: []
+
+  '/need':
+    #GET: NONE
+
+  '/user/{userId}/available':
+    GET: [user:curr]
+    PUT: [user:curr]
+  '/user/{userId}/available/{availableId}':
+    GET: [user:curr]
+    PUT: [user:curr]
+    DELETE: []
+
+  '/available':
+    #GET: NONE
+
+  '/me':
+    GET: [all]
 
   '/request':
     #GET: None

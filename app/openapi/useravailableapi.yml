@@ -1,0 +1,124 @@
+user/{userId}/available:
+    get:
+      summary: List all availables
+      operationId: app.api.UserAvailableView.getAll
+      tags:
+        - available
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The id of the user
+          schema:
+            type: string
+      responses:
+        '200':
+          description: An paged array of availables
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                    $ref: "./schemas.yml#/schemas/Available"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"
+    post:
+      summary: Create a available
+      operationId: app.api.UserAvailableView.post
+      tags:
+        - available
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The id of the user
+          schema:
+            type: string
+      requestBody:
+        description: available to add to the system
+        content:
+          application/json:
+            schema:
+              $ref: "./schemas.yml#/schemas/Available"
+      responses:
+        '200':
+          description: available record interpreted by backend
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Available"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"
+
+user/{userId}/available/{availableId}:
+    get:
+      summary: Info for a specific available
+      operationId: app.api.UserAvailableView.get
+      tags:
+        - available
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The id of the user
+          schema:
+            type: string
+        - name: availableId
+          in: path
+          required: true
+          description: The id of the available to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid available
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Available"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"
+
+    delete:
+      summary: Delete a available
+      operationId: app.api.UserAvailableView.delete
+      tags:
+        - available
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The id of the user
+          schema:
+            type: string
+        - name: availableId
+          in: path
+          required: true
+          description: The id of the available to delete
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Null response
+          content:
+            application/json:
+              schema:
+                  $ref: "./schemas.yml#/schemas/Delete"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"

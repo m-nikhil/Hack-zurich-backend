@@ -1,9 +1,9 @@
-need:
+available:
     get:
-      summary: List all need
-      operationId: app.api.NeedView.getAll
+      summary: List all available
+      operationId: app.api.AvailableView.getAll
       tags:
-        - needs
+        - availables
       responses:
         '200':
           description: An paged array of transactions
@@ -12,7 +12,7 @@ need:
               schema:
                 type: "array"
                 items:
-                    $ref: "./schemas.yml#/schemas/Need"
+                    $ref: "./schemas.yml#/schemas/Available"
         default:
           description: unexpected error
           content:

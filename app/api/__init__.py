@@ -6,3 +6,5 @@ from .itemTag import ItemTagView
 from .user.userNeedView import UserNeedView
 from .needView import NeedView
 from .profileView import ProfileView
+from .user.userAvailableView import UserAvailableView
+from .availableView import AvailableView

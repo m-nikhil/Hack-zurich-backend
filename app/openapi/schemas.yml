@@ -50,17 +50,42 @@ schemas:
       name:
         type: "string"
 
-  SupplyItem:
+
+  Available:
       type: "object"
       additionalProperties: false
       required:
-        - "name"
+        - "ItemName"
         - "quantity"
         - "tags"
       properties:
+        _id:
+          type: "string"
+          readOnly: true
+        timeCreated:
+          type: "string"
+          format: "date-time"
+          readOnly: true
+        timeUpdated:
+          type: "string"
+          format: "date-time"
+          readOnly: true
+        priority:
+          type: string
+          enum:
+            - urgent
+            - asap
+            - anytime
+        status:
+          type: "string"
+          enum:
+            - completed
+            - cancelled
+            - ongoing 
+          readOnly: true
         description:
           type: "string"
-        name: 
+        ItemName: 
           type: "string"
         quantity: 
           type: "integer"
@@ -69,10 +94,15 @@ schemas:
           type: "array"
           items:
             $ref: "#schemas/ItemTag"
+        DeliveryAvailabe:
+          type: boolean
+          default: false
         Price:
           type: "integer"
-        DeliveryAvailable:
-          type: boolean
+          default: 0
+        PaymentDescription:
+          type: "string"
+
         
   Need:
       type: "object"
@@ -173,6 +203,10 @@ schemas:
           type: "array"
           items:
             $ref: "#schemas/Need"
+        available: 
+          type: "array"
+          items:
+            $ref: "#schemas/Available"
 
   UserEditable:
     type: "object"

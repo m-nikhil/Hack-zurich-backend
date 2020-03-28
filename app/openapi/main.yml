@@ -32,6 +32,14 @@ paths:
   '/need':
     $ref: "./needapi.yml#need"
 
+  '/user/{userId}/available':
+    $ref: "./useravailableapi.yml#user~1{userId}~1available"
+  '/user/{userId}/available/{availableId}':
+    $ref: "./useravailableapi.yml#/user~1{userId}~1available~1{availableId}"
+
+  '/available':
+    $ref: "./availableapi.yml#available"
+
   '/me':
     $ref: "./meapi.yml#me"
 

@@ -19,6 +19,7 @@ user:
             application/json:
               schema:
                 $ref: "./schemas.yml#/schemas/Error"
+      security: []
       
     post:
       summary: Create a user
