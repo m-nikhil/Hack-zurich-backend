@@ -11,7 +11,7 @@ class NeedView(SuperView):
     _decorators = []
 
     resource = 'need'
-    mask = {}
+    mask = None
 
     def getAll(self):
       search = {}

@@ -11,7 +11,7 @@ class AvailableView(SuperView):
     _decorators = []
 
     resource = 'available'
-    mask = {}
+    mask = None
 
     def getAll(self):
       search = {}
