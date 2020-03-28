@@ -50,7 +50,7 @@ schemas:
       name:
         type: "string"
 
-  Item:
+  SupplyItem:
       type: "object"
       additionalProperties: false
       required:
@@ -71,18 +71,20 @@ schemas:
             $ref: "#schemas/ItemTag"
         Price:
           type: "integer"
-        DeliveryAvaible:
+        DeliveryAvailable:
           type: boolean
         
   Request:
       type: "object"
       additionalProperties: false
+      required:
+        - "name"
+        - "quantity"
+        - "tags"
       properties:
         _id:
           type: "string"
           readOnly: true
-        description:
-          type: "string"
         timeCreated:
           type: "string"
           format: "date-time"
@@ -91,8 +93,6 @@ schemas:
           type: "string"
           format: "date-time"
           readOnly: true
-        item: 
-           $ref: "#schemas/Item"
         priority:
           type: string
           enum:
@@ -106,6 +106,20 @@ schemas:
             - cancelled
             - ongoing 
           readOnly: true
+        description:
+          type: "string"
+        Itemname: 
+          type: "string"
+        quantity: 
+          type: "integer"
+          minimum: 1
+        tags: 
+          type: "array"
+          items:
+            $ref: "#schemas/ItemTag"
+        DeliveryNeeded:
+          type: boolean
+          default: false
 
   User:
       type: "object"

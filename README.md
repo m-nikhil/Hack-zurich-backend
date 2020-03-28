@@ -22,6 +22,10 @@
 - pip3 install pipenv
 - pipenv install
 
+### flask host and port
+- export FLASK_RUN_PORT=80
+- flask run --host=0.0.0.0
+
 ### To run:
 - pipenv shell
 - flask run

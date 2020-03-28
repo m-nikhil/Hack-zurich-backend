@@ -13,7 +13,9 @@ class UserRequestView(SuperView):
     resource = 'request'
     mask = {'fromId' : False, 'toId' : False}
 
-    def post(self,):
+    #TODO tags not checked with the backend
+
+    def post(self,userId):
       body = request.json
       with self.transaction() as session:
         with session.start_transaction():
