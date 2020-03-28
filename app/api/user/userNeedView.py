@@ -4,13 +4,13 @@ import json
 from bson import ObjectId
 
 
-class UserRequestView(SuperView): 
+class UserNeedView(SuperView): 
     """ Create request service
     """
     method_decorators = []
     _decorators = []
 
-    resource = 'request'
+    resource = 'need'
     mask = {'fromId' : False, 'toId' : False}
 
     #TODO tags not checked with the backend
@@ -19,13 +19,13 @@ class UserRequestView(SuperView):
       body = request.json
       with self.transaction() as session:
         with session.start_transaction():
-          self.insert_subdocument_array(userId,body,'user','requests', 'ALL', None)
+          self.insert_subdocument_array(userId,body,'user','needs', 'ALL', None)
           return self.insert(body)
 
     def delete(self,userId, requestId):
       with self.transaction() as session:
         with session.start_transaction():
-          self.remove_subdocument_array(userId, requestId, 'user', 'request')
+          self.remove_subdocument_array(userId, requestId, 'user', 'needs')
           return self.remove(requestId)
 
     def get(self, userId, requestId):

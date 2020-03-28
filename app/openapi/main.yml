@@ -24,13 +24,13 @@ paths:
   '/itemTag/{itemTagId}':
     $ref: "./itemtagapi.yml#itemTag~1{itemTagId}"
   
-  '/user/{userId}/request':
-    $ref: "./userrequestapi.yml#user~1{userId}~1request"
-  '/user/{userId}/request/{requestId}':
-    $ref: "./userrequestapi.yml#/user~1{userId}~1request~1{requestId}"
+  '/user/{userId}/need':
+    $ref: "./userneedapi.yml#user~1{userId}~1need"
+  '/user/{userId}/need/{needId}':
+    $ref: "./userneedapi.yml#/user~1{userId}~1need~1{needId}"
 
-  '/request':
-    $ref: "./requestapi.yml#request"
+  '/need':
+    $ref: "./needapi.yml#need"
 
   '/me':
     $ref: "./meapi.yml#me"

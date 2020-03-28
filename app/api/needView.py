@@ -4,16 +4,16 @@ import json
 from bson import ObjectId
 
 
-class RequestView(SuperView): 
-    """ Create request service
+class NeedView(SuperView): 
+    """ Create needs service
     """
     method_decorators = []
     _decorators = []
 
-    resource = 'request'
+    resource = 'need'
     mask = {}
 
     def getAll(self):
       search = {}
-      search['request.status'] = 'ongoing'
+      search['need.status'] = 'ongoing'
       return self.retrieveAll(search)

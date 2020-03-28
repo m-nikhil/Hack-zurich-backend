@@ -1,9 +1,9 @@
-user/{userId}/request:
+user/{userId}/need:
     get:
-      summary: List all requests
-      operationId: app.api.UserRequestView.getAll
+      summary: List all needs
+      operationId: app.api.UserNeedView.getAll
       tags:
-        - request
+        - need
       parameters:
         - name: userId
           in: path
@@ -13,13 +13,13 @@ user/{userId}/request:
             type: string
       responses:
         '200':
-          description: An paged array of requests
+          description: An paged array of needs
           content:
             application/json:
               schema:
                 type: "array"
                 items:
-                    $ref: "./schemas.yml#/schemas/Request"
+                    $ref: "./schemas.yml#/schemas/Need"
         default:
           description: unexpected error
           content:
@@ -27,10 +27,10 @@ user/{userId}/request:
               schema:
                 $ref: "./schemas.yml#/schemas/Error"
     post:
-      summary: Create a request
-      operationId: app.api.UserRequestView.post
+      summary: Create a need
+      operationId: app.api.UserNeedView.post
       tags:
-        - request
+        - need
       parameters:
         - name: userId
           in: path
@@ -39,18 +39,18 @@ user/{userId}/request:
           schema:
             type: string
       requestBody:
-        description: request to add to the system
+        description: need to add to the system
         content:
           application/json:
             schema:
-              $ref: "./schemas.yml#/schemas/Request"
+              $ref: "./schemas.yml#/schemas/Need"
       responses:
         '200':
-          description: request record interpreted by backend
+          description: need record interpreted by backend
           content:
             application/json:
               schema:
-                $ref: "./schemas.yml#/schemas/Request"
+                $ref: "./schemas.yml#/schemas/Need"
         default:
           description: unexpected error
           content:
@@ -58,12 +58,12 @@ user/{userId}/request:
               schema:
                 $ref: "./schemas.yml#/schemas/Error"
 
-user/{userId}/request/{requestId}:
+user/{userId}/need/{needId}:
     get:
-      summary: Info for a specific request
-      operationId: app.api.UserRequestView.get
+      summary: Info for a specific need
+      operationId: app.api.UserNeedView.get
       tags:
-        - request
+        - need
       parameters:
         - name: userId
           in: path
@@ -71,19 +71,19 @@ user/{userId}/request/{requestId}:
           description: The id of the user
           schema:
             type: string
-        - name: requestId
+        - name: needId
           in: path
           required: true
-          description: The id of the request to retrieve
+          description: The id of the need to retrieve
           schema:
             type: string
       responses:
         '200':
-          description: Expected response to a valid request
+          description: Expected response to a valid need
           content:
             application/json:
               schema:
-                $ref: "./schemas.yml#/schemas/Request"
+                $ref: "./schemas.yml#/schemas/Need"
         default:
           description: unexpected error
           content:
@@ -92,10 +92,10 @@ user/{userId}/request/{requestId}:
                 $ref: "./schemas.yml#/schemas/Error"
 
     delete:
-      summary: Delete a request
-      operationId: app.api.UserRequestView.delete
+      summary: Delete a need
+      operationId: app.api.UserNeedView.delete
       tags:
-        - request
+        - need
       parameters:
         - name: userId
           in: path
@@ -103,10 +103,10 @@ user/{userId}/request/{requestId}:
           description: The id of the user
           schema:
             type: string
-        - name: requestId
+        - name: needId
           in: path
           required: true
-          description: The id of the request to delete
+          description: The id of the need to delete
           schema:
             type: string
       responses:

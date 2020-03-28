@@ -74,7 +74,7 @@ schemas:
         DeliveryAvailable:
           type: boolean
         
-  Request:
+  Need:
       type: "object"
       additionalProperties: false
       required:
@@ -169,10 +169,10 @@ schemas:
           pattern: '^\d{10}$'
         location:
           $ref: "#schemas/Location"
-        requests: 
+        needs: 
           type: "array"
           items:
-            $ref: "#schemas/Request"
+            $ref: "#schemas/Need"
 
   UserEditable:
     type: "object"
