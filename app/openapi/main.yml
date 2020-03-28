@@ -14,6 +14,24 @@ paths:
   '/user/{userId}/admin':
     $ref: "./userapi.yml#user~1{userId}~1admin"
 
+  /city:
+    $ref: "./cityapi.yml#city"
+  '/city/{cityId}':
+    $ref: "./cityapi.yml#city~1{cityId}"
+
+  /itemTag:
+    $ref: "./itemTagapi.yml#itemTag"
+  '/itemTag/{itemTagId}':
+    $ref: "./itemTagapi.yml#itemTag~1{itemTagId}"
+  
+  '/user/{userId}/request':
+    $ref: "./userrequestapi.yml#user~1{userId}~1request"
+  '/user/{userId}/request/{requestId}':
+    $ref: "./userrequestapi.yml#/user~1{userId}~1request~1{requestId}"
+
+  '/request':
+    $ref: "./requestapi.yml#request"
+
   /auth/login:
     $ref: "./authapi.yml#login"
     

@@ -1,0 +1,124 @@
+user/{userId}/request:
+    get:
+      summary: List all requests
+      operationId: app.api.UserRequestView.getAll
+      tags:
+        - request
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The id of the user
+          schema:
+            type: string
+      responses:
+        '200':
+          description: An paged array of requests
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                    $ref: "./schemas.yml#/schemas/Request"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"
+    post:
+      summary: Create a request
+      operationId: app.api.UserRequestView.post
+      tags:
+        - request
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The id of the user
+          schema:
+            type: string
+      requestBody:
+        description: request to add to the system
+        content:
+          application/json:
+            schema:
+              $ref: "./schemas.yml#/schemas/Request"
+      responses:
+        '200':
+          description: request record interpreted by backend
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Request"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"
+
+user/{userId}/request/{requestId}:
+    get:
+      summary: Info for a specific request
+      operationId: app.api.UserRequestView.get
+      tags:
+        - request
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The id of the user
+          schema:
+            type: string
+        - name: requestId
+          in: path
+          required: true
+          description: The id of the request to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Request"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"
+
+    delete:
+      summary: Delete a request
+      operationId: app.api.UserRequestView.delete
+      tags:
+        - request
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The id of the user
+          schema:
+            type: string
+        - name: requestId
+          in: path
+          required: true
+          description: The id of the request to delete
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Null response
+          content:
+            application/json:
+              schema:
+                  $ref: "./schemas.yml#/schemas/Delete"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"

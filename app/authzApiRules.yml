@@ -1,7 +1,6 @@
 roles:
   - admin:global
   - user
-  - supplier
 
 # comment those don't need jwt auth
 # [] denotes no roles expect global
@@ -18,9 +17,36 @@ rules:
   '/user/<userId>/admin':
     GET: []
     POST: []
+  
+  /city:
+    #GET: None
+    POST: [user]
+  '/city/{cityId}':
+    #GET: None
+    PUT: []
+    DELETE: [] 
+
+  /itemTag:
+    #GET: None
+    POST: [user] 
+  '/itemTag/{itemTagId}':
+    #GET: NONE
+    DELETE: []
+  
+  '/user/{userId}/request':
+    GET: [user:curr]
+    POST: [user:curr]
+  '/user/{userId}/request/{requestId}':
+    GET: [user:curr]
+    PUT: [user:curr]
+    DELETE: []
+
+  '/request':
+    #GET: None
 
   /auth/login:
     #POST: None
+
 
 # comment and mark as None, if a static don't need authz.
 # [] denotes no roles expect global

@@ -1,4 +1,112 @@
 schemas:
+
+  Location:
+    type: "object"
+    additionalProperties: false
+    properties:
+      city:
+        type: "string"
+        readOnly: true
+      state:
+        type: "string"
+        readOnly: true
+      cityId:
+        type: "string"
+        writeOnly: true
+      addressLine1:
+        type: "string"
+      addressLine2:
+        type: "string"
+      zipcode:
+        type: "string"
+      timeCreated:
+        type: "string"
+        format: "date-time"
+        readOnly: true
+      latitude:
+        type: "string"
+      longitute:
+        type: "string"
+
+  City:
+    type: "object"
+    additionalProperties: false
+    description: "city name"
+    properties:
+      _id:
+        type: "string"
+        readOnly: true
+      city:
+        type: "string"
+
+  ItemTag:
+    type: "object"
+    additionalProperties: false
+    description: "Type of Ngo"
+    properties:
+      _id:
+        type: "string"
+        readOnly: true
+      name:
+        type: "string"
+
+  Item:
+      type: "object"
+      additionalProperties: false
+      required:
+        - "name"
+        - "quantity"
+        - "tags"
+      properties:
+        description:
+          type: "string"
+        name: 
+          type: "string"
+        quantity: 
+          type: "integer"
+          minimum: 1
+        tags: 
+          type: "array"
+          items:
+            $ref: "#schemas/ItemTag"
+        Price:
+          type: "integer"
+        DeliveryAvaible:
+          type: boolean
+        
+  Request:
+      type: "object"
+      additionalProperties: false
+      properties:
+        _id:
+          type: "string"
+          readOnly: true
+        description:
+          type: "string"
+        timeCreated:
+          type: "string"
+          format: "date-time"
+          readOnly: true
+        timeUpdated:
+          type: "string"
+          format: "date-time"
+          readOnly: true
+        item: 
+           $ref: "#schemas/Item"
+        priority:
+          type: string
+          enum:
+            - urgent
+            - asap
+            - anytime
+        status:
+          type: "string"
+          enum:
+            - completed
+            - cancelled
+            - ongoing 
+          readOnly: true
+
   User:
       type: "object"
       additionalProperties: false
@@ -7,7 +115,6 @@ schemas:
         - "email"
         - "firstName"
         - "lastName"
-        - "dateOfBirth"
         - "phone"
       properties:
         _id:
@@ -20,9 +127,6 @@ schemas:
         email:
           type: "string"
           format: "email"
-        dateOfBirth:
-          type: "string"
-          format: "date"
         lastlogin:
           type: "string"
           format: "date-time"
@@ -49,6 +153,12 @@ schemas:
         phone:
           type: "string"
           pattern: '^\d{10}$'
+        location:
+          $ref: "#schemas/Location"
+        requests: 
+          type: "array"
+          items:
+            $ref: "#schemas/Request"
 
   UserEditable:
     type: "object"
@@ -61,6 +171,8 @@ schemas:
       phone:
         type: "string"
         pattern: '^\d{10}$'
+      location:
+          $ref: "#schemas/Location"
   
 
   Login:
@@ -76,10 +188,6 @@ schemas:
       confirmpassword:
         type: "string"
         format: "password"
-      isNgo:
-        type: "boolean"
-        default: false
-
 
   Error:
     type: "object"

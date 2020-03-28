@@ -1,0 +1,21 @@
+request:
+    get:
+      summary: List all request
+      operationId: app.api.RequestView.getAll
+      tags:
+        - requests
+      responses:
+        '200':
+          description: An paged array of transactions
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                    $ref: "./schemas.yml#/schemas/Request"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"

@@ -1,0 +1,100 @@
+itemTag:
+    get:
+      summary: List all item tags
+      operationId: app.api.ItemTagView.getAll
+      tags:
+        - item tag
+      responses:
+        '200':
+          description: An paged array of item tags
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                    $ref: "./schemas.yml#/schemas/ItemTag"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"
+      security: []
+    post:
+      summary: Create a new tag
+      operationId: app.api.ItemTagView.post
+      tags:
+        - item tag
+      requestBody:
+        description: Item tag to add to the system
+        content:
+          application/json:
+            schema:
+              $ref: "./schemas.yml#/schemas/ItemTag"
+      responses:
+        '200':
+          description: Item tag record interpreted by backend
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/ItemTag"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"
+
+itemTag/{itemTagId}:
+    get:
+      summary: Info for a specific ngo type
+      operationId: app.api.ItemTagView.get
+      tags:
+        - item tag
+      parameters:
+        - name: itemTagId
+          in: path
+          required: true
+          description: The id of the Item tag to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/ItemTag"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"
+      security: []
+
+    delete:
+      summary: Delete a tag
+      operationId: app.api.ItemTagView.delete
+      tags:
+        - item tag
+      parameters:
+        - name: itemTagId
+          in: path
+          required: true
+          description: The id of the tag to delete
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Null response
+          content:
+            application/json:
+              schema:
+                  $ref: "./schemas.yml#/schemas/Delete"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas.yml#/schemas/Error"

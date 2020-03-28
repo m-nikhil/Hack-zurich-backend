@@ -1,3 +1,6 @@
+## TO DO before prod
+- hash password
+
 ## Developer Guide
 
 - Database used: mongoDB
