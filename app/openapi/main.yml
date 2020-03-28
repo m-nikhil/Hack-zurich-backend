@@ -20,9 +20,9 @@ paths:
     $ref: "./cityapi.yml#city~1{cityId}"
 
   /itemTag:
-    $ref: "./itemTagapi.yml#itemTag"
+    $ref: "./itemtagapi.yml#itemTag"
   '/itemTag/{itemTagId}':
-    $ref: "./itemTagapi.yml#itemTag~1{itemTagId}"
+    $ref: "./itemtagapi.yml#itemTag~1{itemTagId}"
   
   '/user/{userId}/request':
     $ref: "./userrequestapi.yml#user~1{userId}~1request"
