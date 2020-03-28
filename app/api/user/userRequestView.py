@@ -19,7 +19,7 @@ class UserRequestView(SuperView):
       body = request.json
       with self.transaction() as session:
         with session.start_transaction():
-          self.insert_subdocument_array(userId,body,'user','request', 'ALL', None)
+          self.insert_subdocument_array(userId,body,'user','requests', 'ALL', None)
           return self.insert(body)
 
     def delete(self,userId, requestId):
