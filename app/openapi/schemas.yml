@@ -203,6 +203,20 @@ schemas:
         type: "string"
         format: "password"
 
+  me: 
+    type: "object"
+    additionalProperties: false
+    properties:
+      id:
+        type: "string"
+        readOnly: true
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      role:
+        type: "string"
+
   Error:
     type: "object"
     additionalProperties: false

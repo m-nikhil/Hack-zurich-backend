@@ -5,3 +5,4 @@ from .cityView import CityView
 from .itemTag import ItemTagView
 from .user.userRequestView import UserRequestView
 from .requestview import RequestView
+from .profileView import ProfileView

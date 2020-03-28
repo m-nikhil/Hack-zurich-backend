@@ -29,10 +29,12 @@ class AuthView(SuperView):
             raise BussinessException("error",400,"confirm password mismatch") 
         db = self.getConnection()
         payload = {}    
-        result = db.user.find_one({'email':body['email'],'password':body['password']},{'_id':True,'isAdmin':True})
+        result = db.user.find_one({'email':body['email'],'password':body['password']},{'_id':True,'isAdmin':True, 'firstName': True, 'lastName': True})
         if not result:
             raise BussinessException("error",400,"Check your username and passsword!")
         payload['id'] = str(result['_id'])
+        payload['firstName'] = result['firstName']
+        payload['firstName'] = result['lastName']
         if result.get('isAdmin',None):
             payload['role'] = 'admin'
         else:

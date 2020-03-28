@@ -32,6 +32,9 @@ paths:
   '/request':
     $ref: "./requestapi.yml#request"
 
+  '/me':
+    $ref: "./meapi.yml#me"
+
   /auth/login:
     $ref: "./authapi.yml#login"
     
