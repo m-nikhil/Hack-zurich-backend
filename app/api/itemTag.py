@@ -10,7 +10,7 @@ class ItemTagView(SuperView):
     _decorators = []
 
     resource = 'itemtag'
-    mask = {}
+    mask = None
     
     #tag cannot be updated
 
