@@ -78,7 +78,7 @@ schemas:
       type: "object"
       additionalProperties: false
       required:
-        - "name"
+        - "ItemName"
         - "quantity"
         - "tags"
       properties:
@@ -108,7 +108,7 @@ schemas:
           readOnly: true
         description:
           type: "string"
-        Itemname: 
+        ItemName: 
           type: "string"
         quantity: 
           type: "integer"
