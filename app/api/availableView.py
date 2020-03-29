@@ -14,4 +14,4 @@ class AvailableView(SuperView):
     mask = None
 
     def getAll(self):
-      return self.retrieveAll(search)
+      return self.retrieveAll()
