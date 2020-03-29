@@ -14,5 +14,4 @@ class NeedView(SuperView):
     mask = None
 
     def getAll(self):
-      search = {}
       return self.retrieveAll(search)

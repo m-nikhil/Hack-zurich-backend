@@ -14,6 +14,4 @@ class AvailableView(SuperView):
     mask = None
 
     def getAll(self):
-      search = {}
-      search['available.status'] = 'ongoing'
       return self.retrieveAll(search)
