@@ -33,32 +33,24 @@ rules:
   '/itemTag/{itemTagId}':
     #GET: NONE
     DELETE: []
-  
-  '/user/{userId}/request':
+
+  '/user/<userId>/need':
     GET: [user:curr]
     POST: [user:curr]
-  '/user/{userId}/request/{requestId}':
+  '/user/<userId>/need/<needId>':
     GET: [user:curr]
-    PUT: [user:curr]
-    DELETE: []
-
-  '/user/{userId}/need':
-    GET: [user:curr]
-    PUT: [user:curr]
-  '/user/{userId}/need/{needId}':
-    GET: [user:curr]
-    PUT: [user:curr]
+    POST: [user:curr]
     DELETE: []
 
   '/need':
     #GET: NONE
 
-  '/user/{userId}/available':
+  '/user/<userId>/available':
     GET: [user:curr]
-    PUT: [user:curr]
-  '/user/{userId}/available/{availableId}':
+    POST: [user:curr]
+  '/user/<userId>/available/<availableId>':
     GET: [user:curr]
-    PUT: [user:curr]
+    POST: [user:curr]
     DELETE: []
 
   '/available':
