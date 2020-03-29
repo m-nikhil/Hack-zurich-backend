@@ -15,5 +15,4 @@ class NeedView(SuperView):
 
     def getAll(self):
       search = {}
-      search['need.status'] = 'ongoing'
       return self.retrieveAll(search)
